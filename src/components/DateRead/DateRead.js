@@ -1,3 +1,5 @@
+import './DateRead.css';
+
 const DateRead = ({dateRead}) => {
     
     const year = dateRead.getFullYear();
@@ -5,7 +7,7 @@ const DateRead = ({dateRead}) => {
     const day = dateRead.toLocaleString("es-AR", { dat: "2-digit" });
 
     return (
-        <div>
+        <div className='date-container'>
             <div>{year}</div>
             <div>{month}</div>
             <div>{day}</div>

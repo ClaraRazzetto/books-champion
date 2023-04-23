@@ -8,6 +8,9 @@ const BookItem = ({title, author, dateRead, pageCount}) => {
 
   const clickHandler = () => {
     setTitleBook('Actualizado');
+    //Esto se muestra con el valor anterior xq setTitleBook() es asincrona 
+    // y demora en ejecutarse
+    console.log(titleBook);
   };
   
   return (

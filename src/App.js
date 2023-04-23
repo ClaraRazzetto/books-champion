@@ -1,5 +1,6 @@
 import './App.css';
 import Books from './components/Books/Books';
+import Newbook from './components/NewBook/Newbook';
 
 function App() {
   // books es un arreglo con 4 objetos
@@ -33,6 +34,7 @@ function App() {
   return (
     <div className="App">
       <Books books={books}/>
+      <Newbook/>
     </div>
   );
 }
