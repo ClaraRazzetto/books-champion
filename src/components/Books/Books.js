@@ -1,33 +1,39 @@
+import { useState } from "react"
 import BookItem from "../BookItem/BookItem"
+import BookFilter from "../Filter/BookFilter"
 import './Books.css'
 
 const Books = ({books}) => {
+
+    const [selectedYear, setSelectedYear] = useState('2021');
+
+    const onYearChanged = (newSelectedYear) =>{
+        setSelectedYear(newSelectedYear);
+    };
+
+    const bookList = books
+        .filter((book) => book.dateRead.getFullYear().toString() === selectedYear)
+        .map((book) => (
+            <BookItem
+                    key={book.id}
+                    title={book.title}
+                    author={book.author}
+                    dateRead={book.dateRead}
+                    pageCount={book.pageCount}
+            />
+        ))
+
     return (
         <>
-            <BookItem
-                title={books[0].title}
-                author={books[0].author}
-                dateRead={books[0].dateRead}
-                pageCount={books[0].pageCount}
-            />
-            <BookItem
-                title={books[1].title}
-                author={books[1].author}
-                dateRead={books[1].dateRead}
-                pageCount={books[1].pageCount}
-            />
-            <BookItem
-                title={books[2].title}
-                author={books[2].author}
-                dateRead={books[2].dateRead}
-                pageCount={books[2].pageCount}
-            />
-            <BookItem
-                title={books[3].title}
-                author={books[3].author}
-                dateRead={books[3].dateRead}
-                pageCount={books[3].pageCount}
-            />
+            <BookFilter onYearChanged = {onYearChanged} year={selectedYear}/>
+            <div>
+                {bookList.lenght === 0 ? 
+                    (<p>No leiste libros en {selectedYear}</p>) 
+                    : 
+                    (bookList)
+                }
+            </div>
+
         </>
     )
 }

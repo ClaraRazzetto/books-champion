@@ -3,5 +3,8 @@ App
         BookItem
             DateRead
                         BookCard ?  
+        BookFiltered
+
     NewBook
         BookForm
+    

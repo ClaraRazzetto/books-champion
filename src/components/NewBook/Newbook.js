@@ -1,10 +1,11 @@
 import BookForm from "../BookForm/BookForm";
 import "./NewBook.css";
 
-const Newbook = () => {
+const Newbook = ({onBookDataSaved}) => {
   return (
     <div className="new-book">
-        <BookForm/>
+        {/* Pasamos como props una funcion que declaramos en el componente padre */}
+        <BookForm onBookDataSaved={onBookDataSaved}/>
     </div>
   )
 }

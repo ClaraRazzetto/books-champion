@@ -3,12 +3,13 @@
    Escuchar inputs de los usuarios: objeto event
    Limpieza de inputs: two-way binding (prop value y set(''))
    event.preventDefault()
+   Pasar data de hijos a padres 
 */
 
 import { useState } from 'react';
 import './BookForm.css';
 
-const BookForm = () => {
+const BookForm = ({onBookDataSaved}) => {
 
     //Creamos un estado para la variable titlo que ingresa el usuario
     //El estado inicial es '' xq los input devuelven siempre string aunque sea un numero date
@@ -48,14 +49,20 @@ const BookForm = () => {
             title: enteredTitle,
             author: enteredAuthor,
             pageCount: enteredPageCount,
-            dateRead: Date(enteredDate).toString(),
+            dateRead: Date(enteredDate),
         };
+
+        //Pasamos data de hijos a padres
+        //Invocamos la funcion onBookDataSaved declarada en App
+        //y le enviamos como parametro bookData
+        onBookDataSaved(bookData);
+
         //Setteamos en '' los values de los input
         //Esto se llama two-way binding
-        enteredTitle('');
-        enteredAuthor('');
-        enteredPageCount('');
-        enteredDate('');
+        setEnteredTitle('');
+        setEnteredAuthor('');
+        setEnteredPageCount('');
+        setEnteredDate('');
     }
 
   return (
